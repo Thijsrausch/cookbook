@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-img :src="`/images/${recipe.image}`" height="200px" />
+    <v-img :src="imageSrc" height="200px" />
     <h1>{{ recipe.naam }}</h1>
     <p>Porties: {{ recipe.porties }}</p>
     <h2>Ingrediënten</h2>
@@ -29,6 +29,11 @@ export default {
     return {
       recipe: recipes.find((r) => r.id === this.id),
     };
+  },
+  computed: {
+    imageSrc() {
+      return `${import.meta.env.BASE_URL}images/${this.recipe.image}`;
+    },
   },
 };
 </script>
